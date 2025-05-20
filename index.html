@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Розрахунок електричних навантажень</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <h1>Електричний Калькулятор Навантажень</h1>
+      <p>Введіть параметри електроприймача для розрахунку силового навантаження</p>
+    </header>
+
+    <form id="loadCalcForm" class="input-form">
+      <div class="form-group">
+        <label for="ep-name">Назва ЕП</label>
+        <input type="text" id="ep-name" placeholder="Наприклад, Шліфувальний станок" required />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="efficiency">ККД (η)</label>
+          <input type="number" id="efficiency" min="0" max="1" step="0.01" required />
+        </div>
+        <div class="form-group">
+          <label for="power-factor">cos φ</label>
+          <input type="number" id="power-factor" min="0" max="1" step="0.01" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="voltage">Напруга, кВ</label>
+          <input type="number" id="voltage" min="0" step="0.01" required />
+        </div>
+        <div class="form-group">
+          <label for="quantity">Кількість ЕП</label>
+          <input type="number" id="quantity" min="1" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nominal-power">Номінальна потужність, кВт</label>
+          <input type="number" id="nominal-power" min="0" step="0.01" required />
+        </div>
+        <div class="form-group">
+          <label for="utilization">Коеф. використання (Кв)</label>
+          <input type="number" id="utilization" min="0" max="1" step="0.01" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="reactive-factor">Коеф. реактивної потужності (tg φ)</label>
+        <input type="number" id="reactive-factor" step="0.01" required />
+      </div>
+
+      <button type="submit" class="btn-submit">Обчислити</button>
+    </form>
+
+    <section class="results" aria-live="polite">
+      <h2>Результати</h2>
+      <div id="calculation-results"></div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
